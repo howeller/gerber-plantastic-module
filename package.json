@@ -1,0 +1,28 @@
+{
+  "name": "gerber-hero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "responsive"
+  ],
+  "author": "howeller",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "fs": "^0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglifycss": "^1.1.0",
+    "include-media": "^1.4.10",
+    "merge-stream": "^2.0.0",
+    "path": "^0.12.7",
+    "sass": "^1.49.9"
+  }
+}

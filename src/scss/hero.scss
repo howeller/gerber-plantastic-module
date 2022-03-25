@@ -1,0 +1,68 @@
+section {
+	
+	height: 100vh;
+	max-width: 1440px;
+	margin: 0 auto;
+
+	.hero {
+
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		visibility: hidden;
+		border: 1px black solid;
+
+		@include media(">=desktop") {
+			border: 5px red solid;
+			min-height: 400px;
+		}
+		@include media("<=tablet") {
+			border: 5px white solid;
+			min-height: 650px;
+		}
+		@include media("<=phone") {
+			border: 5px blue solid;
+			min-height: 100vh;
+		}
+
+		/* img.wave {
+			position: absolute;
+			display: none;
+			bottom: 0;
+			left: 0;
+		}
+		img#wave_dt {
+			@include media(">=desktop") {
+				display: block;
+				width: 325%;
+			}
+			@include media("<=tablet") {display: none;}
+			@include media("<=phone") {display: none;}
+		}
+		img#wave_tab {
+			@include media("<=tablet") {
+				display: block;
+				width: 325%;
+			}
+			@include media(">=desktop") {display: none;}
+			@include media("<=phone") {display: none;}
+		}
+		img#wave_m {
+			@include media("<=phone") {
+				display: block;
+				width: 300%;
+				// width: 260%;
+				// bottom: -20%;
+			}
+			@include media(">=desktop") {display: none;}
+			@include media("<=tablet") {display: none;}
+		} */
+
+		/* .wrapper {
+			width: 100%;
+			font-size: 0;
+			margin: 0 auto;
+		} */
+
+	}
+}

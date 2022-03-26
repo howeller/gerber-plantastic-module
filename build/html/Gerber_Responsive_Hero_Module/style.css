@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #00491e;
+  color: white;
+  font-size: 16px;
+}
+
+section * {
+  display: block;
+  box-sizing: border-box;
+}
+
+svg {
+  overflow: visible;
+}
+
+section {
+  height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+section .hero {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  visibility: hidden;
+  border: 1px black solid;
+  background-image: url(images/background_dt_2x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* img.wave {
+  	position: absolute;
+  	display: none;
+  	bottom: 0;
+  	left: 0;
+  }
+  img#wave_dt {
+  	@include media(">=desktop") {
+  		display: block;
+  		width: 325%;
+  	}
+  	@include media("<=tablet") {display: none;}
+  	@include media("<=phone") {display: none;}
+  }
+  img#wave_tab {
+  	@include media("<=tablet") {
+  		display: block;
+  		width: 325%;
+  	}
+  	@include media(">=desktop") {display: none;}
+  	@include media("<=phone") {display: none;}
+  }
+  img#wave_m {
+  	@include media("<=phone") {
+  		display: block;
+  		width: 300%;
+  		// width: 260%;
+  		// bottom: -20%;
+  	}
+  	@include media(">=desktop") {display: none;}
+  	@include media("<=tablet") {display: none;}
+  } */
+  /* .wrapper {
+  	width: 100%;
+  	font-size: 0;
+  	margin: 0 auto;
+  } */
+}
+
+section .hero .pic-container {
+  position: absolute;
+  max-width: 900px;
+}
+
+section .hero .pic-container img#pic {
+  -webkit-clip-path: url(#wave-mask);
+  clip-path: url(#wave-mask);
+  position: absolute;
+  top: 0;
+}
+
+section .hero .lockup-container {
+  position: absolute;
+  right: 0;
+  max-width: 660px;
+  width: clamp(50%, 1vw, 60%);
+  color: white;
+  text-align: center;
+}
+
+section .hero .lockup-container * span {
+  display: inline;
+}
+
+section .hero .lockup-container #logo-wrapper {
+  margin: 2em auto 0.5em;
+}
+
+section .hero .lockup-container h1 {
+  font-family: cabrito-normal, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(20px, 2vw, 26px);
+}
+
+section .hero .lockup-container p#txt {
+  max-width: 80%;
+  margin: 0 auto 1rem;
+  font-family: cabrito-normal, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+section .hero .lockup-container button.cta {
+  background-color: white;
+  border-radius: 1em;
+  border: 0;
+  color: #1c3315;
+  font-family: cabrito-normal, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  padding: 5px 1rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 1025px) {
+  section .hero {
+    background-image: url(images/background_dt_2x.png);
+    border: 5px red solid;
+    min-height: 400px;
+  }
+
+  section .hero .pic-container img#pic {
+    height: 100%;
+  }
+
+  section .hero .lockup-container #logo-wrapper {
+    width: 64%;
+  }
+
+  section .hero .lockup-container h1 {
+    margin-bottom: 0.4em;
+  }
+
+  section .hero .lockup-container p#txt {
+    font-size: clamp(15px, 2vw, 19px);
+    margin-bottom: 1.5em;
+    max-width: 68%;
+  }
+
+  section .hero .lockup-container button.cta {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 1024px) {
+  section .hero {
+    background-image: url(images/background_dt_2x.png);
+    border: 5px white solid;
+    min-height: 650px;
+  }
+
+  section .hero .lockup-container button.cta {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 780px) {
+  section .hero {
+    background-image: url(images/background_mo_2x.png);
+    border: 5px blue solid;
+    min-height: 100vh;
+  }
+
+  section .hero .lockup-container button.cta {
+    font-size: 1em;
+  }
+}

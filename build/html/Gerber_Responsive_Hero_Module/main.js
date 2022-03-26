@@ -42,8 +42,8 @@
 		tl.add('start')
 			.fromTo('#pic',{left:0},{left:getPicStartX(), duration:0})
 			.fromTo('#wave', {left:'-50%'}, {left:0, duration:1, ease:'power3.out'}, 'start')
-			.fromTo('#wave-path',{x:'-100%'}, {x:0, duration:2, ease:'power3.out'}, 'start')
-			// .fromTo('#wave-path',{x:'-100%'}, {x:getWaveEndX(), duration:2, ease:'power3.out'}, 'start')
+			// .fromTo('#wave-path',{x:'-100%'}, {x:0, duration:2, ease:'power3.out'}, 'start')
+			.fromTo('#wave-path',{x:'-100%'}, {x:getWaveEndX(), duration:2, ease:'power3.out'}, 'start')
 			.add(logoPopInTl(),'start')
 			.add('end')
 			.add(txtInTl('h1'))
@@ -105,7 +105,7 @@
 			_maxWidth = 1440,
 			// _picWidth = gsap.getProperty('#pic', 'width','px'),
 			_diffX =  _maxWidth - windowWidth;
-			_distanceX = Math.round( _diffX * pct )/100;
+			_distanceX = Math.round( (_diffX * pct)/100 )/2;
 
 			console.group('getPicStartX')
 			cl('_diffX '+_diffX);
@@ -119,7 +119,7 @@
 			_maxWidth = 1440,
 			// _picWidth = gsap.getProperty('#pic', 'width','px'),
 			_diffX =  _maxWidth - windowWidth;
-			_distanceX = Math.round( _diffX * pct )/100;
+			_distanceX = Math.round( _diffX * pct/100) /2;
 
 			console.group('getWaveEndX')
 			cl('_diffX '+_diffX);

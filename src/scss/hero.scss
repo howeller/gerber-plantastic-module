@@ -25,166 +25,231 @@ section {
 
 		@include media(">=desktop") {
 			background-image: url(images/background_dt_2x.png);
-			border: 5px red solid;
+			// border: 5px red solid;
 			min-height: 400px;
 		}
 		@include media("<=tablet") {
 			background-image: url(images/background_dt_2x.png);
-			border: 5px white solid;
+			// border: 5px white solid;
 			min-height: 650px;
 		}
 		@include media("<=phone") {
 			background-image: url(images/background_mo_2x.png);
-			border: 5px blue solid;
+			// border: 5px blue solid;
 			min-height: 100vh;
 		}
 		@include media(">=desktop") {}
 		@include media("<=tablet") {}
 		@include media("<=phone") {}
 
+		// #pic-dt-container {
+		// 	@include media(">=desktop") {
+		// 		display: block; 
+		// 	}
+		// 	@include media("<=tablet") {display: none;}
+		// 	@include media("<=phone") {display: none;}
+		// }
+		// #pic-tab-container {
+		// 	@include media("<=tablet") {display: block; }
+		// 	@include media(">=desktop") {display: none;}
+		// 	@include media("<=phone") {display: none;}
+		// }
+		// #pic-mo-container
+		// 	@include media("<=phone") {display: block; }
+		// 	@include media(">=desktop") {display: none;}
+		// 	@include media("<=tablet") {display: none;}
+		// }
+
 		.pic-container {
 			position: absolute;
-			max-width: 900px;
+			width: 100%;
+			height: 100%;
 
-			img#pic {
-				clip-path:url(#wave-mask);
+			@include media(">=desktop") {
+				max-width: 900px;
+			}
+			@include media("<=tablet") {
+
+			}
+			@include media("<=phone") {
+
+			}
+
+			svg {
 				position: absolute;
-				top: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				// height: 100%;
+			}
+			svg#wave-dt {
+				@include media(">=desktop") {display: block; }
+				@include media("<=tablet") {display: none; }
+				@include media("<=phone") {display: none; }
+			}
+			svg#wave-tab {
+				@include media("<=tablet") {
+					display: block;
+					height: clamp(319px, 40vw, 413px);
+				}
+				@include media(">=desktop") {display: none;}
+				@include media("<=phone") {display: none;}
+			}
+			svg#wave-mo {
+				@include media("<=phone") {display: block; }
+				@include media(">=desktop") {display: none;}
+				@include media("<=tablet") {display: none;}
+			}
+
+			img.pic {
+				position: absolute;
+			}
+
+			img#pic-dt {
 				@include media(">=desktop") {
+					display: block;
+					clip-path:url(#wave-mask-dt);
+					top: 0;
 					height: 100%;
 				}
-				@include media("<=tablet") {}
-				@include media("<=phone") {}
+				@include media("<=tablet") {display: none; }
+				@include media("<=phone") {display: none; }
+			}
+			#pic-tab {
+				@include media("<=tablet") {
+					display: block;
+					// clip-path:url(#wave-mask-tab);
+					width: 100%;
+					bottom: 0;
+				}
+				@include media(">=desktop") {display: none;}
+				@include media("<=phone") {display: none;}
+			}
+			img#pic-mo {
+				@include media("<=phone") {
+					display: block;
+					clip-path:url(#wave-mask-mo);
+					width: 100%;
+					top: 0;
+				}
+				@include media(">=desktop") {display: none;}
+				@include media("<=tablet") {display: none;}
 			}
 		}
 
 		.lockup-container {
 			position: absolute;
-			right: 0;
-			max-width: 660px;
-			width: clamp(50%, 1vw, 60%);
 			color: white;
 			text-align: center;
+			width: 100%;
 			// border: 2px dotted red;
 
+			@include media(">=desktop") {
+				right: 0;
+				max-width: 660px;
+				width: clamp(50%, 1vw, 60%);
+			}
+			@include media("<=tablet") {
+				margin: 4em auto 0;
+			}
+			@include media("<=phone") {
+
+			}
+
 			& * span {
-					display: inline;
-			} 
+				display: inline;
+			}
 
 			#logo-wrapper {
-				// position: relative;
-				margin: 2em auto 0.5em;
-
 				@include media(">=desktop") {
+					margin: 2em auto 0.5em;
 					width: 64%;
 				}
 				@include media("<=tablet") {
-
+					// margin: 5% auto 0.5em;
+					width: 41%;
+					// transform: translateX(-50%);
 				}
 				@include media("<=phone") {
-
+					// width: 50%;
 				}
 			}
+			#txt-wrapper {
 
-			h1 {
-				font: {
-					family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
-					weight: 700;
-					style: normal;
-					size: clamp(20px, 2vw, $font-dt);
-				}
-				@include media(">=desktop") {
-					margin-bottom: 0.4em;
-				}
-				@include media("<=tablet") {}
-				@include media("<=phone") {}
-			}
-
-			p#txt {
-				max-width: 80%;
-				margin: 0 auto 1rem;
-				font: {
-					family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
-					weight: 400;
-					style: normal;
-				}
-
-				// span {
-				// 	display: inline;
-				// }
-
-				@include media(">=desktop") {
-					// position: absolute;
-					font-size: clamp(15px, 2vw, 19px);
-					margin-bottom: 1.5em;
-					max-width: 68%;//25rem;
-					// right: 3%;//80px;
-					// top: 50px;
-				}
 				@include media("<=tablet") {
-				  // font-size: clamp(24px, 3vw, $font-tab);
+					position: absolute;
+					width: 39%;
+					right: 1%;
+					top: 0;
 				}
-				@include media("<=phone") {
-				  // font-size: clamp(13px, 4vw, $font-m);
-				}
-			}
-			button.cta {
-				background-color: white;
-				border-radius: 1em;
-				border: 0;
-				color: $darkGreen;
-				font: {
-					family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
-					weight: 700;
-					style: normal;
-				}
-				padding: 5px 1rem;
-				margin: 0 auto;
 
-				@include media(">=desktop") {
-					font-size: 1em;
+				h1 {
+					font: {
+						family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
+						weight: 700;
+						style: normal;
+					}
+					@include media(">=desktop") {
+						size: clamp(20px, 2vw, $font-dt);
+						margin-bottom: 0.4em;
+					}
+					@include media("<=tablet") {
+						size: clamp(20px, 2vw, $font-tab);
+						margin-bottom: 0.4em;
+						padding: 0 12%;
+					}
+					@include media("<=phone") {}
 				}
-				@include media("<=tablet") {
-					font-size: 1em;
-				}
-				@include media("<=phone") {
-					font-size: 1em;
-				}
-			}
-		}
 
-		/* img.wave {
-			position: absolute;
-			display: none;
-			bottom: 0;
-			left: 0;
-		}
-		img#wave_dt {
-			@include media(">=desktop") {
-				display: block;
-				width: 325%;
+				p#txt {
+					max-width: 80%;
+					margin: 0 auto 1rem;
+					font: {
+						family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
+						weight: 400;
+						style: normal;
+					}
+
+					@include media(">=desktop") {
+						// position: absolute;
+						font-size: clamp(15px, 2vw, 19px);
+						margin-bottom: 1.5em;
+						max-width: 68%;//25rem;
+						// right: 3%;//80px;
+						// top: 50px;
+					}
+					@include media("<=tablet") {
+					  // font-size: clamp(24px, 3vw, $font-tab);
+					}
+					@include media("<=phone") {
+					  // font-size: clamp(13px, 4vw, $font-m);
+					}
+				}
+				button.cta {
+					background-color: white;
+					border-radius: 1em;
+					border: 0;
+					color: $darkGreen;
+					font: {
+						family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
+						weight: 700;
+						style: normal;
+					}
+					padding: 5px 1rem;
+					margin: 0 auto;
+
+					@include media(">=desktop") {
+						font-size: 1em;
+					}
+					@include media("<=tablet") {
+						font-size: 1.15em;
+					}
+					@include media("<=phone") {
+						font-size: 1em;
+					}
+				}
 			}
-			@include media("<=tablet") {display: none;}
-			@include media("<=phone") {display: none;}
 		}
-		img#wave_tab {
-			@include media("<=tablet") {
-				display: block;
-				width: 325%;
-			}
-			@include media(">=desktop") {display: none;}
-			@include media("<=phone") {display: none;}
-		}
-		img#wave_m {
-			@include media("<=phone") {
-				display: block;
-				width: 300%;
-				// width: 260%;
-				// bottom: -20%;
-			}
-			@include media(">=desktop") {display: none;}
-			@include media("<=tablet") {display: none;}
-		} */
 
 		/* .wrapper {
 			width: 100%;

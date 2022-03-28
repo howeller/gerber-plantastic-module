@@ -40,7 +40,8 @@
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl.add('start')
-			.fromTo('#pic-dt',{left:0},{left:getDtPicStartX(), duration:0})
+			.fromTo('#pic-dt',{x:0},{x:getDtPicStartX(), duration:0})
+			// .fromTo('#pic-dt',{left:0},{left:getDtPicStartX(), duration:0})
 			// .fromTo('#wave', {left:'-50%'}, {left:0, duration:1, ease:'power3.out'}, 'start')
 			.fromTo('#wave-mask-dt',{x:-900}, {x:getDtWaveEndX(), duration:2, ease:'power3.out'}, 'start')
 			// .fromTo('#wave-mask',{x:'-100%'}, {x:getDtWaveEndX(), duration:2, ease:'power3.out'}, 'start')

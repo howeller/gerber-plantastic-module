@@ -59,10 +59,6 @@ section {
 				position: absolute;
 				left: 0;
 				width: 100%;
-
-				// image: {
-				// 	width: 100%;
-				// }
 			}
 			svg#wave-dt {
 				@include media(">=desktop") {
@@ -91,16 +87,16 @@ section {
 				@include media("<=tablet") {display: none;}
 			}
 
-			img.pic {
+			.pic {
 				position: absolute;
 			}
 
 			#pic-dt {
 				@include media(">=desktop") {
 					display: block;
-					clip-path:url(#wave-mask-dt);
 					top: 0;
 					height: 100%;
+					// clip-path:url(#wave-mask-dt);
 				}
 				@include media("<=tablet") {display: none; }
 				// @include media("<=phone") {display: none; }

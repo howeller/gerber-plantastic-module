@@ -48,7 +48,7 @@ section .hero .pic-container svg {
   width: 100%;
 }
 
-section .hero .pic-container img.pic {
+section .hero .pic-container .pic {
   position: absolute;
 }
 
@@ -114,8 +114,6 @@ section .hero .lockup-container #txt-wrapper button.cta {
 
   section .hero .pic-container #pic-dt {
     display: block;
-    -webkit-clip-path: url(#wave-mask-dt);
-    clip-path: url(#wave-mask-dt);
     top: 0;
     height: 100%;
   }

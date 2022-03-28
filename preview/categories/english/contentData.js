@@ -22,15 +22,15 @@ var objData = {
 							"Mobile:780x1438,"+
 							"Tablet Landscape:1024x650,"+
 							"Desktop:1440x400,"+
-							"Tablet Portrait:720x1024,"+
-							"Apple iPad Pro:512x683,"+
-							"Apple iPhone 11 Pro:338x731,"+
-							"Apple iPhone 8 Plus:365x648,"+
-							"Apple iPhone XR:318x689,"+ 
-							"Apple iPhone SE:314x559,"+
-							"Google Pixel:335x595,"+
-							"Samsung Galaxy 8:324x666,"+
-							"resize,"+
+							// "Tablet Portrait:650x1024,"+
+							// "Apple iPad Pro:512x683,"+
+							// "Apple iPhone 11 Pro:338x731,"+
+							// "Apple iPhone 8 Plus:365x648,"+
+							// "Apple iPhone XR:318x689,"+ 
+							// "Apple iPhone SE:314x559,"+
+							// "Google Pixel:335x595,"+
+							// "Samsung Galaxy 8:324x666,"+
+							// "resize,"+
 							// "fullscreen" + 
 						"]"
 					},
@@ -47,8 +47,8 @@ var objData = {
 						sizesArray: "[" + 
 							"Tablet Landscape:1024x650,"+
 							"Mobile:780x1438,"+
-							// "Tablet Portrait:720x1024,"+
 							"Desktop:1440x400,"+
+							// "Tablet Portrait:650x1024,"+
 							// "Apple iPad Pro:512x683,"+
 							// "Apple iPhone 11 Pro:338x731," +
 							// "Apple iPhone 8 Plus:365x648," +
@@ -73,7 +73,7 @@ var objData = {
 							"Desktop:1440x400,"+
 							"Mobile:780x1438,"+
 							"Tablet Landscape:1024x650,"+
-							// "Tablet Portrait:720x1024,"+
+							// "Tablet Portrait:650x1024,"+
 							// "Apple iPad Pro:512x683,"+
 							// "Apple iPhone 11 Pro:338x731," +
 							// "Apple iPhone 8 Plus:365x648," +

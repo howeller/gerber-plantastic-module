@@ -42,7 +42,7 @@
 		tl.add('start')
 			.fromTo('#pic-dt',{x:0},{x:getDtPicStartX(), duration:0})
 			.fromTo('#wave-mask-dt',{x:-900}, {x:getDtWaveEndX(), duration:2, ease:'power3.out'}, 'start')
-			.add(logoPopInTl(), 'start')
+			.add(logoTl(), 'start+=0.3')
  			.fromTo('#logo',{x:0, y:100, scale:1.2}, { y:0, scale:1, duration: 1, ease:'power3.inOut'}, '+=0.5')
 			.add('end', '-=0.3')
 			.add(endTl(), 'end')
@@ -58,7 +58,7 @@
 		tl.add('start')
 			.fromTo('#wave-mask-tab',{x:-2000,y:900}, {x:0, y:-42, duration:2, ease:'power3.out'}, 'start')
 			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
-			.add(logoPopInTl(), 'start')
+			.add(logoTl(), 'start+=0.3')
  			.fromTo('#logo', { x:getCenterX('#logo') }, {x:'20%', duration:0.5})
 			.add('end', '-=0.3')
 			.add(endTl(), 'end')
@@ -75,9 +75,9 @@
 		tl.add('start')
 			.fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
 			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
-			.add(logoPopInTl(), '-=.5')
+			.add(logoTl(), '-=.5')
 			.add('end', '-=.3')
-			// .add(logoPopInTl(), 'start')
+			// .add(logoTl(), 'start')
 			// .add('end', 'start+=.8')
 			.add(endTl(), 'end')
 
@@ -99,7 +99,7 @@
 		return gsap.timeline()
 			.fromTo(_id, {  x:'50%', y:'50%', scale:0 }, { x:0, y:0, scale:1, duration:_speed, ease:'back.out(1.3)'})
 	}
-	function logoPopInTl() {
+	function logoTl() {
 		return gsap.timeline()
 			.add('start')
  			.fromTo(['#N','#E','#W'], { x:'50%', y:'50%', scale:0 }, {x:0, y:0, scale:1, duration:0.3, stagger:0.1, ease:'back.out(1.3)'}, 'start')

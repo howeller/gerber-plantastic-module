@@ -41,19 +41,11 @@
 
 		tl.add('start')
 			.fromTo('#pic-dt',{x:0},{x:getDtPicStartX(), duration:0})
-			// .fromTo('#pic-dt',{left:0},{left:getDtPicStartX(), duration:0})
-			// .fromTo('#wave', {left:'-50%'}, {left:0, duration:1, ease:'power3.out'}, 'start')
 			.fromTo('#wave-mask-dt',{x:-900}, {x:getDtWaveEndX(), duration:2, ease:'power3.out'}, 'start')
-			// .fromTo('#wave-mask',{x:'-100%'}, {x:getDtWaveEndX(), duration:2, ease:'power3.out'}, 'start')
-			// .fromTo('#wave-mask',{x:-1000}, {x:0, duration:2, ease:'power3.out'}, 'start')
-			.fromTo('#logo', { x:0, y:100, scale:0 }, {scale:1.2, duration:0.3, stagger:0.1, ease:'back.out(1.3)'}, 'start')
- 			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'})
- 			.to('#logo', {y:0, scale:1, duration: 1, ease:'power3.inOut'}, '+=2')
-			// .add(logoPopInTl(),'start')
-			.add('end')
-			.add(txtInTl('h1'))
-			.add(txtInTl('#txt'))
-			.add(popInTl('.cta'))
+			.add(logoPopInTl(), 'start')
+ 			.fromTo('#logo',{x:0, y:100, scale:1.2}, { y:0, scale:1, duration: 1, ease:'power3.inOut'}, '+=0.5')
+			.add('end', '-=0.3')
+			.add(endTl(), 'end')
 			// .seek('end')
 			// tl.pause(.6);
 	}
@@ -64,15 +56,12 @@
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 	
 		tl.add('start')
-			.fromTo('#wave-mask-tab',{x:-2000,y:900}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
+			.fromTo('#wave-mask-tab',{x:-2000,y:900}, {x:0, y:-42, duration:2, ease:'power3.out'}, 'start')
 			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
-			.fromTo('#logo', { x:getCenterX('#logo'), y:0, scale:0 }, {scale:1, duration:0.3, ease:'back.out(1.3)'}, 'start')
- 			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'}, 'start+=0.3')
-			.add('end')
- 			.to('#logo', {x:'20%', duration: 0.5, ease:'power3.inOut'})
-			.add(txtInTl('h1'))
-			.add(txtInTl('#txt'))
-			.add(popInTl('.cta'))
+			.add(logoPopInTl(), 'start')
+ 			.fromTo('#logo', { x:getCenterX('#logo') }, {x:'20%', duration:0.5})
+			.add('end', '-=0.3')
+			.add(endTl(), 'end')
 			// .seek('end')
 			// tl.pause(.6);
 	}
@@ -80,19 +69,18 @@
 	function animateMobile() {
 		cl('animateMobile!');
 
-		resizeWaveClipPath('wave-mask-mo', 'wave-path-mo');
+		resizeMoWaveClipPath('wave-mask-mo', 'wave-path-mo');
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl.add('start')
 			.fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
-			// .fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:getMoWaveEndY(), duration:2, ease:'power3.out'}, 'start')
 			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
-			.fromTo('#logo', { x:0, y:0, scale:0 }, {scale:1, duration:0.3, ease:'back.out(1.3)'}, 'start')
- 			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'}, 'start+=0.3')
-			.add('end')
-			.add(txtInTl('h1'))
-			.add(txtInTl('#txt'))
-			.add(popInTl('.cta'))
+			.add(logoPopInTl(), '-=.5')
+			.add('end', '-=.3')
+			// .add(logoPopInTl(), 'start')
+			// .add('end', 'start+=.8')
+			.add(endTl(), 'end')
+
 			// .seek('end')
 			// tl.pause(.6);
 	}
@@ -107,13 +95,24 @@
 		return gsap.timeline()
 			.fromTo(_id, { scale:0, y:0 }, { duration:0.5, scale:1, transformOrigin:_origin, ease:'back.out(1.2)'});
 	}
-/*	function logoPopInTl(_id, _origin='50% 50%') {
+	function logoElementPopInTl(_id, _speed=0.3) {
 		return gsap.timeline()
- 			.fromTo('#logo', { y:100, scale:0 }, {scale:1.2, duration:0.3, stagger:0.1, ease:'back.out(1.3)'})
- 			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'})
- 			.to('#logo', {y:0, scale:1, duration: 0.5, ease:'power3.inOut'}, '+=2');
-			// .add(popInTl('#logo'))
-	}*/
+			.fromTo(_id, {  x:'50%', y:'50%', scale:0 }, { x:0, y:0, scale:1, duration:_speed, ease:'back.out(1.3)'})
+	}
+	function logoPopInTl() {
+		return gsap.timeline()
+			.add('start')
+ 			.fromTo(['#N','#E','#W'], { x:'50%', y:'50%', scale:0 }, {x:0, y:0, scale:1, duration:0.3, stagger:0.1, ease:'back.out(1.3)'}, 'start')
+ 			.add(logoElementPopInTl('#Gerber-logo'), 'start+=.3')
+ 			.add(logoElementPopInTl('#plant-tastic-lockup', 0.4), 'start+=0.6')
+	}
+	function endTl() {
+		return gsap.timeline()
+			.add('start')
+			.add(txtInTl('h1'), 'start')
+			.add(txtInTl('#txt'), '-=0.3')
+			.add(popInTl('.cta'), '-=0.3')
+	}
 
 	function txtInTl(_txt){
 
@@ -137,7 +136,7 @@
 		return _startX;
 	}
 
-	function resizeWaveClipPath(_clipPathId, _pathId) {
+	function resizeMoWaveClipPath(_clipPathId, _pathId) {
 		let thePath = id(_pathId),
 			_picProp = gsap.getProperty('#pic-mo'),
 			_picW = _picProp('width'),
@@ -150,7 +149,7 @@
 			// sy = 1/_picH;
 			sx = 0.0012345,
 			sy = 0.00178814; // Edit these numbers to get close to image width + height /1
-		console.group('resizeWaveClipPath');
+		console.group('resizeMoWaveClipPath');
 		// cl(`bb ${bb}`);
 		// cl(`bb.width ${bb.width}`);
 		// cl(`bb.height ${bb.height}`);
@@ -166,7 +165,7 @@
 /*	function getMoWaveEndY() {
 		let _waveH = 525,
 			_picH = gsap.getProperty('#pic-mo','height'),
-			_endY = (_waveH - _picH) *-1; 
+			_startY = (_waveH - _picH) *-1; 
 		cl(`	getMoWaveEndY ${_endY}`)
 
 		return _endY;
@@ -186,6 +185,7 @@
 			console.groupEnd();
 		return _endX;
 	}
+
 	function getCenterX(_id) {
 		return Math.round(windowWidth / 2 - (gsap.getProperty(_id, 'width') / 2));
 	}

@@ -11,6 +11,7 @@ section {
 		overflow: hidden;
 		visibility: hidden;
 		border: 1px black solid;
+		overflow: auto;
 
 		// display: flex;
 		// flex-direction: row;
@@ -58,6 +59,10 @@ section {
 				position: absolute;
 				left: 0;
 				width: 100%;
+
+				// image: {
+				// 	width: 100%;
+				// }
 			}
 			svg#wave-dt {
 				@include media(">=desktop") {
@@ -172,7 +177,7 @@ section {
 				}
 				@include media("<=phone") {
 					position: relative;
-					margin: 0 auto;
+					margin: 0 auto 5em;
 					width: clamp(250px, 66vw, 67%);
 				}
 

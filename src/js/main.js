@@ -79,12 +79,13 @@
 	function animateMobile() {
 		cl('animateMobile!');
 
-		// setWaveSize('wave-path-mo');
+		resizeWaveClipPath('wave-mask-mo', 'wave-path-mo');
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl.add('start')
-			.fromTo('#wave-path-mo',{y:'-100%'}, { y:getMoWaveEndY(), duration:2, ease:'power3.out'}, 'start')
-			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ x:0, y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
+			.fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
+			// .fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:getMoWaveEndY(), duration:2, ease:'power3.out'}, 'start')
+			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
 			.fromTo('#logo', { x:0, y:0, scale:0 }, {scale:1, duration:0.3, ease:'back.out(1.3)'}, 'start')
  			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'}, 'start+=0.3')
 			.add('end')
@@ -95,16 +96,6 @@
 			// tl.pause(.6);
 	}
 
-	function setWaveSize(_id) {
-		let thePath = id(_id),
-			bb = thePath.getBBox(),
-			sx = 1/bb.width,
-			sy = 1/bb.height;
-		// cl(`	setWaveSize ${bb.width}`);
-
-		// gsap.set(thePath, { scale: `${sx}`,`${sy}`});
-		thePath.setAttribute('transform', `scale(${sx},${sy})`);
-	}
 	/*function popInOutTl(_id, _origin='50% 50%', _repeat=-1) {
 		let _delay = _repeat >= 0 ? 0 : 10; // Do not add delay if repeat # is passed in.
 		return gsap.timeline({defaults:{duration:0.5}, repeat:_repeat, repeatDelay:_delay})
@@ -145,14 +136,40 @@
 		return _startX;
 	}
 
-	function getMoWaveEndY() {
+	function resizeWaveClipPath(_clipPathId, _pathId) {
+		let thePath = id(_pathId),
+			_picProp = gsap.getProperty('#pic-mo'),
+			_picW = _picProp('width'),
+			// _picH = _picProp('height'),
+			_picH = id('pic-mo').naturalHeight,
+			// bb = thePath.getBBox(),
+			// sx = 1/bb.width,
+			// sy = 1/bb.height;
+			// sx = 1/_picW,
+			// sy = 1/_picH;
+			sx = 0.0012345,
+			sy = 0.00178814; // Edit these numbers to get close to image width + height /1
+		console.group('resizeWaveClipPath');
+		// cl(`bb ${bb}`);
+		// cl(`bb.width ${bb.width}`);
+		// cl(`bb.height ${bb.height}`);
+		cl(`_picW ${(1/_picW)}`);
+		cl(`_picH ${(_picH)}`);
+		cl(`sx ${sx}`);
+		cl(`sy ${sy} `)
+		console.groupEnd();
+		id(_clipPathId).setAttribute('transform', `scale(${sx} ${sy})`);
+		// id(_clipPathId).setAttribute('transform', `scale(0.0012345, 0.00178814)`);
+		// thePath.setAttribute('transform', `scale(${sx} ${sy})`);
+	}
+/*	function getMoWaveEndY() {
 		let _waveH = 525,
 			_picH = gsap.getProperty('#pic-mo','height'),
 			_endY = (_waveH - _picH) *-1; 
 		cl(`	getMoWaveEndY ${_endY}`)
 
 		return _endY;
-	}
+	}*/
 
 	function getDtWaveEndX() {
 		let pct = 62.5,

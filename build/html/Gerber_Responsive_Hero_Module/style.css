@@ -30,6 +30,7 @@ section .hero {
   overflow: hidden;
   visibility: hidden;
   border: 1px black solid;
+  overflow: auto;
   background-image: url(images/background_dt_2x.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -252,7 +253,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
 
   section .hero .lockup-container #txt-wrapper {
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 5em;
     width: clamp(250px, 66vw, 67%);
   }
 

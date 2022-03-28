@@ -80,16 +80,9 @@
 			// .add(logoTl(), 'start')
 			// .add('end', 'start+=.8')
 			.add(endTl(), 'end')
-
 			// .seek('end')
 			// tl.pause(.6);
 	}
-
-	/*function popInOutTl(_id, _origin='50% 50%', _repeat=-1) {
-		let _delay = _repeat >= 0 ? 0 : 10; // Do not add delay if repeat # is passed in.
-		return gsap.timeline({defaults:{duration:0.5}, repeat:_repeat, repeatDelay:_delay})
-			.to(_id, { scale: 0, transformOrigin:_origin, ease:'back.in(1.2)', yoyo:true, repeat:1})
-	}*/
 
 	function popInTl(_id, _origin='50% 50%') {
 		return gsap.timeline()

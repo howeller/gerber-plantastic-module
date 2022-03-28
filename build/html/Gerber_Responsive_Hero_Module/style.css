@@ -34,11 +34,6 @@ section .hero {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  /* .wrapper {
-  	width: 100%;
-  	font-size: 0;
-  	margin: 0 auto;
-  } */
 }
 
 section .hero .pic-container {
@@ -49,7 +44,6 @@ section .hero .pic-container {
 
 section .hero .pic-container svg {
   position: absolute;
-  bottom: 0;
   left: 0;
   width: 100%;
 }
@@ -107,6 +101,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
 
   section .hero .pic-container svg#wave-dt {
     display: block;
+    bottom: 0;
   }
 
   section .hero .pic-container svg#wave-tab {
@@ -117,7 +112,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
     display: none;
   }
 
-  section .hero .pic-container img#pic-dt {
+  section .hero .pic-container #pic-dt {
     display: block;
     -webkit-clip-path: url(#wave-mask-dt);
     clip-path: url(#wave-mask-dt);
@@ -129,7 +124,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
     display: none;
   }
 
-  section .hero .pic-container img#pic-mo {
+  section .hero .pic-container #pic-mo {
     display: none;
   }
 
@@ -145,7 +140,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
   }
 
   section .hero .lockup-container #txt-wrapper h1 {
-    size: clamp(20px, 2vw, 26px);
+    font-size: clamp(20px, 2vw, 26px);
     margin-bottom: 0.4em;
   }
 
@@ -172,6 +167,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
 
   section .hero .pic-container svg#wave-tab {
     display: block;
+    bottom: 0;
     height: clamp(319px, 40vw, 413px);
   }
 
@@ -179,7 +175,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
     display: none;
   }
 
-  section .hero .pic-container img#pic-dt {
+  section .hero .pic-container #pic-dt {
     display: none;
   }
 
@@ -189,7 +185,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
     bottom: 0;
   }
 
-  section .hero .pic-container img#pic-mo {
+  section .hero .pic-container #pic-mo {
     display: none;
   }
 
@@ -209,7 +205,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
   }
 
   section .hero .lockup-container #txt-wrapper h1 {
-    size: clamp(20px, 2vw, 28px);
+    font-size: clamp(20px, 2vw, 28px);
     margin-bottom: 0.4em;
     padding: 0 12%;
   }
@@ -225,32 +221,47 @@ section .hero .lockup-container #txt-wrapper button.cta {
     min-height: 100vh;
   }
 
-  section .hero .pic-container svg#wave-dt {
-    display: none;
-  }
-
   section .hero .pic-container svg#wave-tab {
     display: none;
   }
 
   section .hero .pic-container svg#wave-mo {
     display: block;
-  }
-
-  section .hero .pic-container img#pic-dt {
-    display: none;
+    top: 0;
+    height: clamp(319px, 40vw, 413px);
   }
 
   section .hero .pic-container #pic-tab {
     display: none;
   }
 
-  section .hero .pic-container img#pic-mo {
+  section .hero .pic-container #pic-mo {
     display: block;
-    -webkit-clip-path: url(#wave-mask-mo);
-    clip-path: url(#wave-mask-mo);
     width: 100%;
     top: 0;
+  }
+
+  section .hero .lockup-container {
+    margin: clamp(18em, 76vw, 35em) auto 0;
+  }
+
+  section .hero .lockup-container #logo-wrapper {
+    width: clamp(250px, 66vw, 67%);
+    margin: 0em auto 1em;
+  }
+
+  section .hero .lockup-container #txt-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: clamp(250px, 66vw, 67%);
+  }
+
+  section .hero .lockup-container #txt-wrapper h1 {
+    font-size: clamp(20px, 6vw, 39px);
+  }
+
+  section .hero .lockup-container #txt-wrapper p#txt {
+    font-size: clamp(13px, 4vw, 27px);
   }
 
   section .hero .lockup-container #txt-wrapper button.cta {

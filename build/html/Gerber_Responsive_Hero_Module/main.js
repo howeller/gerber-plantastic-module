@@ -64,7 +64,7 @@
 	
 		tl.add('start')
 			.fromTo('#wave-mask-tab',{x:-2000,y:900}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
-			.fromTo('#pic-tab',{x:'-20%'},{x:0, duration:1.5, ease:'power3.out'}, 'start')
+			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
 			.fromTo('#logo', { x:getCenterX('#logo'), y:0, scale:0 }, {scale:1, duration:0.3, ease:'back.out(1.3)'}, 'start')
  			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'}, 'start+=0.3')
 			.add('end')
@@ -72,7 +72,6 @@
 			.add(txtInTl('h1'))
 			.add(txtInTl('#txt'))
 			.add(popInTl('.cta'))
-
 			// .seek('end')
 			// tl.pause(.6);
 	}
@@ -80,14 +79,32 @@
 	function animateMobile() {
 		cl('animateMobile!');
 
+		// setWaveSize('wave-path-mo');
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl.add('start')
-
+			.fromTo('#wave-path-mo',{y:'-100%'}, { y:getMoWaveEndY(), duration:2, ease:'power3.out'}, 'start')
+			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ x:0, y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
+			.fromTo('#logo', { x:0, y:0, scale:0 }, {scale:1, duration:0.3, ease:'back.out(1.3)'}, 'start')
+ 			.fromTo(['#N','#E','#W'], { y:10, scale:0 }, { y:0, scale:1, duration:0.3, stagger:0.1,ease:'back.out(1.3)'}, 'start+=0.3')
+			.add('end')
+			.add(txtInTl('h1'))
+			.add(txtInTl('#txt'))
+			.add(popInTl('.cta'))
 			// .seek('end')
 			// tl.pause(.6);
 	}
 
+	function setWaveSize(_id) {
+		let thePath = id(_id),
+			bb = thePath.getBBox(),
+			sx = 1/bb.width,
+			sy = 1/bb.height;
+		// cl(`	setWaveSize ${bb.width}`);
+
+		// gsap.set(thePath, { scale: `${sx}`,`${sy}`});
+		thePath.setAttribute('transform', `scale(${sx},${sy})`);
+	}
 	/*function popInOutTl(_id, _origin='50% 50%', _repeat=-1) {
 		let _delay = _repeat >= 0 ? 0 : 10; // Do not add delay if repeat # is passed in.
 		return gsap.timeline({defaults:{duration:0.5}, repeat:_repeat, repeatDelay:_delay})
@@ -126,6 +143,15 @@
 			cl('_startX '+_startX);
 			console.groupEnd();
 		return _startX;
+	}
+
+	function getMoWaveEndY() {
+		let _waveH = 525,
+			_picH = gsap.getProperty('#pic-mo','height'),
+			_endY = (_waveH - _picH) *-1; 
+		cl(`	getMoWaveEndY ${_endY}`)
+
+		return _endY;
 	}
 
 	function getDtWaveEndX() {

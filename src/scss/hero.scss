@@ -38,27 +38,6 @@ section {
 			// border: 5px blue solid;
 			min-height: 100vh;
 		}
-		@include media(">=desktop") {}
-		@include media("<=tablet") {}
-		@include media("<=phone") {}
-
-		// #pic-dt-container {
-		// 	@include media(">=desktop") {
-		// 		display: block; 
-		// 	}
-		// 	@include media("<=tablet") {display: none;}
-		// 	@include media("<=phone") {display: none;}
-		// }
-		// #pic-tab-container {
-		// 	@include media("<=tablet") {display: block; }
-		// 	@include media(">=desktop") {display: none;}
-		// 	@include media("<=phone") {display: none;}
-		// }
-		// #pic-mo-container
-		// 	@include media("<=phone") {display: block; }
-		// 	@include media(">=desktop") {display: none;}
-		// 	@include media("<=tablet") {display: none;}
-		// }
 
 		.pic-container {
 			position: absolute;
@@ -69,34 +48,40 @@ section {
 				max-width: 900px;
 			}
 			@include media("<=tablet") {
-
+				// max-width: 100%;
 			}
 			@include media("<=phone") {
-
+				// max-width: 100%;
 			}
 
 			svg {
 				position: absolute;
-				bottom: 0;
 				left: 0;
 				width: 100%;
-				// height: 100%;
 			}
 			svg#wave-dt {
-				@include media(">=desktop") {display: block; }
+				@include media(">=desktop") {
+					display: block; 
+					bottom: 0;
+				}
 				@include media("<=tablet") {display: none; }
-				@include media("<=phone") {display: none; }
+				// @include media("<=phone") {display: none; }
 			}
 			svg#wave-tab {
 				@include media("<=tablet") {
 					display: block;
+					bottom: 0;
 					height: clamp(319px, 40vw, 413px);
 				}
 				@include media(">=desktop") {display: none;}
 				@include media("<=phone") {display: none;}
 			}
 			svg#wave-mo {
-				@include media("<=phone") {display: block; }
+				@include media("<=phone") {
+					display: block;
+					top: 0;
+					height: clamp(319px, 40vw, 413px);
+				}
 				@include media(">=desktop") {display: none;}
 				@include media("<=tablet") {display: none;}
 			}
@@ -105,7 +90,7 @@ section {
 				position: absolute;
 			}
 
-			img#pic-dt {
+			#pic-dt {
 				@include media(">=desktop") {
 					display: block;
 					clip-path:url(#wave-mask-dt);
@@ -113,7 +98,7 @@ section {
 					height: 100%;
 				}
 				@include media("<=tablet") {display: none; }
-				@include media("<=phone") {display: none; }
+				// @include media("<=phone") {display: none; }
 			}
 			#pic-tab {
 				@include media("<=tablet") {
@@ -125,10 +110,11 @@ section {
 				@include media(">=desktop") {display: none;}
 				@include media("<=phone") {display: none;}
 			}
-			img#pic-mo {
+			#pic-mo {
 				@include media("<=phone") {
 					display: block;
-					clip-path:url(#wave-mask-mo);
+					// position: absolute;
+					// clip-path: url(#wave-mask-mo);
 					width: 100%;
 					top: 0;
 				}
@@ -153,7 +139,8 @@ section {
 				margin: 4em auto 0;
 			}
 			@include media("<=phone") {
-
+				// position: relative;
+				margin: clamp(18em, 76vw, 35em) auto 0;
 			}
 
 			& * span {
@@ -171,7 +158,8 @@ section {
 					// transform: translateX(-50%);
 				}
 				@include media("<=phone") {
-					// width: 50%;
+					width: clamp(250px, 66vw, 67%);
+					margin: 0em auto 1em;
 				}
 			}
 			#txt-wrapper {
@@ -182,6 +170,11 @@ section {
 					right: 1%;
 					top: 0;
 				}
+				@include media("<=phone") {
+					position: relative;
+					margin: 0 auto;
+					width: clamp(250px, 66vw, 67%);
+				}
 
 				h1 {
 					font: {
@@ -190,15 +183,17 @@ section {
 						style: normal;
 					}
 					@include media(">=desktop") {
-						size: clamp(20px, 2vw, $font-dt);
+						font-size: clamp(20px, 2vw, $font-dt);
 						margin-bottom: 0.4em;
 					}
 					@include media("<=tablet") {
-						size: clamp(20px, 2vw, $font-tab);
+						font-size: clamp(20px, 2vw, $font-tab);
 						margin-bottom: 0.4em;
 						padding: 0 12%;
 					}
-					@include media("<=phone") {}
+					@include media("<=phone") {
+						font-size: clamp(20px, 6vw, 39px);						
+					}
 				}
 
 				p#txt {
@@ -222,7 +217,7 @@ section {
 					  // font-size: clamp(24px, 3vw, $font-tab);
 					}
 					@include media("<=phone") {
-					  // font-size: clamp(13px, 4vw, $font-m);
+					  font-size: clamp(13px, 4vw, 27px);
 					}
 				}
 				button.cta {
@@ -250,12 +245,5 @@ section {
 				}
 			}
 		}
-
-		/* .wrapper {
-			width: 100%;
-			font-size: 0;
-			margin: 0 auto;
-		} */
-
 	}
 }

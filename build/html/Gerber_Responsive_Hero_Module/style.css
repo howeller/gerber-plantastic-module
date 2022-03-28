@@ -30,7 +30,6 @@ section .hero {
   overflow: hidden;
   visibility: hidden;
   border: 1px black solid;
-  overflow: auto;
   background-image: url(images/background_dt_2x.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -220,6 +219,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
   section .hero {
     background-image: url(images/background_mo_2x.png);
     min-height: 100vh;
+    overflow: auto;
   }
 
   section .hero .pic-container svg#wave-tab {
@@ -243,7 +243,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
   }
 
   section .hero .lockup-container {
-    margin: clamp(18em, 76vw, 35em) auto 0;
+    margin: clamp(14em, 76vw, 35em) auto 0;
   }
 
   section .hero .lockup-container #logo-wrapper {

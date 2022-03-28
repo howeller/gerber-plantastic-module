@@ -11,7 +11,6 @@ section {
 		overflow: hidden;
 		visibility: hidden;
 		border: 1px black solid;
-		overflow: auto;
 
 		// display: flex;
 		// flex-direction: row;
@@ -38,6 +37,7 @@ section {
 			background-image: url(images/background_mo_2x.png);
 			// border: 5px blue solid;
 			min-height: 100vh;
+			overflow: auto;
 		}
 
 		.pic-container {
@@ -145,7 +145,7 @@ section {
 			}
 			@include media("<=phone") {
 				// position: relative;
-				margin: clamp(18em, 76vw, 35em) auto 0;
+				margin: clamp(14em, 76vw, 35em) auto 0;
 			}
 
 			& * span {

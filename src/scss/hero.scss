@@ -29,7 +29,7 @@ section {
 			min-height: 400px;
 		}
 		@include media("<=tablet") {
-			background-image: url(images/background_dt_2x.png);
+			background-image: url(images/background_tab_2x.png);
 			// border: 5px white solid;
 			min-height: 650px;
 		}
@@ -215,7 +215,7 @@ section {
 						// top: 50px;
 					}
 					@include media("<=tablet") {
-					  // font-size: clamp(24px, 3vw, $font-tab);
+						margin-bottom: 2em;
 					}
 					@include media("<=phone") {
 					  font-size: clamp(13px, 4vw, 27px);

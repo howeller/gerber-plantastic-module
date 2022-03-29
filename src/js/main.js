@@ -56,11 +56,11 @@
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 	
 		tl.add('start')
-			.fromTo('#wave-mask-tab',{x:-2000,y:900}, {x:0, y:-42, duration:2, ease:'power3.out'}, 'start')
-			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
-			.add(logoTl(), 'start+=0.3')
- 			.fromTo('#logo', { x:getCenterX('#logo') }, {x:'20%', duration:0.5})
-			.add('end', '-=0.3')
+			.fromTo('#wave-mask-tab',{x:-2000,y:500}, {x:0, y:-42, duration:2.3, ease:'power.out'}, 'start')
+			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.8, ease:'power.out'}, 'start')
+			.add(logoTl(), '-=1.3')
+ 			.fromTo('#logo', { x:getCenterX('#logo') }, {x:'40%', duration:1.5, ease:'power3.inOut'})
+			.add('end', '-=1.3')
 			.add(endTl(), 'end')
 			// .seek('end')
 			// tl.pause(.6);
@@ -155,6 +155,7 @@
 		// id(_clipPathId).setAttribute('transform', `scale(0.0012345, 0.00178814)`);
 		// thePath.setAttribute('transform', `scale(${sx} ${sy})`);
 	}
+
 /*	function getMoWaveEndY() {
 		let _waveH = 525,
 			_picH = gsap.getProperty('#pic-mo','height'),

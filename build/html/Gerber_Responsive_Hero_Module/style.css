@@ -155,7 +155,7 @@ section .hero .lockup-container #txt-wrapper button.cta {
 
 @media (max-width: 1024px) {
   section .hero {
-    background-image: url(images/background_dt_2x.png);
+    background-image: url(images/background_tab_2x.png);
     min-height: 650px;
   }
 
@@ -206,6 +206,10 @@ section .hero .lockup-container #txt-wrapper button.cta {
     font-size: clamp(20px, 3vw, 28px);
     margin-bottom: 0.4em;
     padding: 0 12%;
+  }
+
+  section .hero .lockup-container #txt-wrapper p#txt {
+    margin-bottom: 2em;
   }
 
   section .hero .lockup-container #txt-wrapper button.cta {

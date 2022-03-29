@@ -128,13 +128,10 @@ const onClick = e => console.log(`CLICK!`);
 		cl(`sy ${sy} `)
 		console.groupEnd();*/
 		id(`wave-mask-${_sizeSuffix}`).setAttribute('transform', `scale(${sx} ${sy})`);
-		// id(_clipPathId).setAttribute('transform', `scale(0.0012345, 0.00178814)`);
-		// thePath.setAttribute('transform', `scale(${sx} ${sy})`);
 	}
 	function getDtPicStartX() {
 		let pct = 62.5,
 			_maxWidth = 1440,
-			// _picWidth = gsap.getProperty('#pic', 'width','px'),
 			_diffWidth =  _maxWidth - windowWidth;
 			_distanceX = Math.round( (_diffWidth * pct)/100 )/2,
 			_startX = _distanceX <= 0 ? 0 : '+='+_distanceX * -1;
@@ -148,15 +145,14 @@ const onClick = e => console.log(`CLICK!`);
 	function getDtWaveEndX() {
 		let pct = 62.5,
 			_maxWidth = 1440,
-			// _picWidth = gsap.getProperty('#pic', 'width','px'),
 			_diffWidth =  _maxWidth - windowWidth;
 			_distanceX = Math.round( _diffWidth * pct/100) /2,
-			_endX = _distanceX <= 0 ? 0 : (_distanceX * -1)/*+'px'*/;
+			_endX = _distanceX <= 0 ? 0 : (_distanceX * -1);
 
-			console.group('getDtWaveEndX')
-			cl('_diffWidth '+_diffWidth);
-			cl('_endX '+_endX);
-			console.groupEnd();
+			// console.group('getDtWaveEndX');
+			// cl('_diffWidth '+_diffWidth);
+			// cl('_endX '+_endX);
+			// console.groupEnd();
 		return _endX;
 	}
 

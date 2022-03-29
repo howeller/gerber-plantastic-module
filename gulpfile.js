@@ -7,6 +7,7 @@ const del = require('del'),
 	sass = require('gulp-sass')(require('sass')),
 	gcmq = require('gulp-group-css-media-queries'),
 	autoprefixer = require('gulp-autoprefixer'),
+	sourcemaps = require('gulp-sourcemaps'),
 	rename = require('gulp-rename'),
 	uglify = require('gulp-uglify'),
 	uglifycss = require('gulp-uglifycss');
@@ -26,9 +27,12 @@ const prefixerPrefs = {
 
 function buildStyles() {
   return gulp.src(dir.scss+'style.scss')
+		.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer(prefixerPrefs))
     .pipe(gcmq())
+		// .pipe(uglifycss())
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dir.dist));
 }
 
@@ -48,23 +52,25 @@ function images(){
 
 function minify(){
 
-	let _css = gulp.src(dir.dist+'*.css')
-		.pipe(uglifycss())
+	// let _css = gulp.src(dir.dist+'*.css')
+	// 	.pipe(uglifycss())
 
-	let _js = gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
+	return gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
+		.pipe(sourcemaps.init())
 		.pipe(uglify())
+		.pipe(sourcemaps.write('./maps'))
+		.pipe(gulp.dest(dir.dist))
 		// .pipe(rename({suffix: '.min'}))
 
-	return merge(_css, _js).pipe(gulp.dest(dir.dist))
+	// return merge(_css, _js).pipe(gulp.dest(dir.dist))
 };
 
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
 gulp.task('build', build);
 gulp.task('sass', buildStyles);
-gulp.task('min', gulp.series('build', minify));
+gulp.task('prod', gulp.series('sass', 'build', minify));
 gulp.task('images', gulp.series('clean', images, 'sass', 'build'));
 gulp.task('default', gulp.series('sass', 'build'));
-// gulp.task('watch', function(callback) { return gulp.watch(dir.src+'**/**', gulp.series('default')); callback(); });
 gulp.task('watch', () => { return gulp.watch(['src/*/**'], gulp.series('default'))});
 
 

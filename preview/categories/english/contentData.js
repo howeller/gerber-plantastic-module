@@ -30,7 +30,7 @@ var objData = {
 							// "Apple iPhone SE:314x559,"+
 							// "Google Pixel:335x595,"+
 							// "Samsung Galaxy 8:324x666,"+
-							// "resize,"+
+							"resize,"+
 							// "fullscreen" + 
 						"]"
 					},
@@ -56,6 +56,7 @@ var objData = {
 							// "Apple iPhone SE:314x559," +
 							// "Google Pixel:335x595," +
 							// "Samsung Galaxy 8:324x666," +
+							"resize,"+
 							// "fullscreen" + 
 						"]"
 					},
@@ -81,6 +82,7 @@ var objData = {
 							// "Apple iPhone SE:314x559," +
 							// "Google Pixel:335x595," +
 							// "Samsung Galaxy 8:324x666," +
+							"resize,"+
 							// "fullscreen" + 
 						"]"
 					}

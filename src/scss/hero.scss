@@ -53,6 +53,7 @@ section {
 				width: 100%;
 			}
 			svg#wave-dt {
+				// overflow: visible;
 				@include media(">=desktop") {
 					display: block; 
 					bottom: 0;

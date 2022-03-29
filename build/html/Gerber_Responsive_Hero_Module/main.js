@@ -31,11 +31,17 @@ const onClick = e => console.log(`CLICK! ${e}`);
 
 	function onResize(event) {
 		windowWidth = event.target.innerWidth;
-		gsap.set(['#pic-dt','#pic-tab','#pic-mo','#wave-dt','#wave-tab','#wave-mo'],{scale:1, x:0, y:0, width:'100%'});
+		resetElements();
 		tl.seek(0);
 		tl.kill();
 		cl('onResize: '+windowWidth);
 		startAnimation();
+	}
+
+	function resetElements() {
+		gsap.set(['#pic-dt','#pic-tab','#pic-mo','#wave-dt','#wave-tab','#wave-mo'],{scale:1, x:0, y:0});
+		gsap.set(['#pic-tab','#pic-mo','#wave-tab','#wave-mo'],{ width:'100%'});
+		gsap.set(['#pic-dt','#wave-dt'], {height:'100%'});
 	}
 
 	function animateDesktop() {

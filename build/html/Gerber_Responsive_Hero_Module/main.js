@@ -1,3 +1,5 @@
+const onClick = e => console.log(`CLICK! ${e}`);
+
 (function(window, document){
 
 	let tl, txt, windowWidth;
@@ -10,6 +12,7 @@
 		windowWidth = window.innerWidth;
 		gsap.set('.hero',{visibility:'visible'});
 		startAnimation(windowWidth);
+		// document.querySelector('.hero').onclick = myClick => cl('CLICK');
 	}
 
 	function startAnimation() {
@@ -28,6 +31,7 @@
 
 	function onResize(event) {
 		windowWidth = event.target.innerWidth;
+		gsap.set(['#pic-dt','#pic-tab','#pic-mo','#wave-dt','#wave-tab','#wave-mo'],{scale:1, x:0, y:0, width:'100%'});
 		tl.seek(0);
 		tl.kill();
 		cl('onResize: '+windowWidth);
@@ -52,14 +56,21 @@
 
 	function animateTablet() {
 		cl('animateTablet!');
+		let _picProp = gsap.getProperty('#pic-tab'),
+		_picW = 1/_picProp('width'),
+		_picH = _picProp('height');
+
+		resizeWaveClipPath('tab', 1/1024, 1/415);// Pass in the full size image width + height and a number between 0-1
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 	
 		tl.add('start')
-			.fromTo('#wave-mask-tab',{x:-2000,y:500}, {x:0, y:-42, duration:2.3, ease:'power.out'}, 'start')
+			.fromTo('#wave-path-tab',{x:'-100%',y:'100%'}, {x:0, y:0, duration:2.3, ease:'power.out'}, 'start')
+			// .fromTo('#wave-mask-tab',{x:-2000,y:500}, {x:0, y:-42, duration:2.3, ease:'power.out'}, 'start')
 			.fromTo('#pic-tab',{x:'-30%', scale:1.3},{x:0, scale:1, duration:1.8, ease:'power.out'}, 'start')
 			.add(logoTl(), '-=1.3')
- 			.fromTo('#logo', { x:getCenterX('#logo') }, {x:'40%', duration:1.5, ease:'power3.inOut'})
+ 			.fromTo('#logo', { x:0, y:0 }, {x:'-40%', duration:1.5, ease:'power3.inOut'})
+ 			// .fromTo('#logo', { x:getCenterX('#logo'), y:0 }, {x:'40%', duration:1.5, ease:'power3.inOut'})
 			.add('end', '-=1.3')
 			.add(endTl(), 'end')
 			// .seek('end')
@@ -69,10 +80,11 @@
 	function animateMobile() {
 		cl('animateMobile!');
 
-		resizeMoWaveClipPath('wave-mask-mo', 'wave-path-mo');
+		resizeWaveClipPath('mo', 0.0012345, 0.00178814);
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl.add('start')
+			.set('#logo',{x:0, y:0})//set in case other animations were triggered on window resize
 			.fromTo('#wave-path-mo',{x:'-100%', y:'-100%'}, {x:0, y:0, duration:2, ease:'power3.out'}, 'start')
 			.fromTo('#pic-mo',{x:0, y:'-10%', scale:1.3 },{ y:0, scale:1, duration:1.5, ease:'power3.out'}, 'start')
 			.add(logoTl(), '-=.5')
@@ -129,20 +141,21 @@
 		return _startX;
 	}
 
-	function resizeMoWaveClipPath(_clipPathId, _pathId) {
-		let thePath = id(_pathId),
-			_picProp = gsap.getProperty('#pic-mo'),
+	function resizeWaveClipPath(_sizeSuffix='mo', _scaleX=0.0012345, _scaleY=0.00178814 ) {
+		let thePath = id(`wave-path-${_sizeSuffix}`),
+			_picProp = gsap.getProperty('#pic-'+_sizeSuffix),
 			_picW = _picProp('width'),
 			// _picH = _picProp('height'),
-			_picH = id('pic-mo').naturalHeight,
+			_picH = id(`pic-${_sizeSuffix}`).offsetHeight,
 			// bb = thePath.getBBox(),
 			// sx = 1/bb.width,
 			// sy = 1/bb.height;
 			// sx = 1/_picW,
 			// sy = 1/_picH;
-			sx = 0.0012345,
-			sy = 0.00178814; // Edit these numbers to get close to image width + height /1
-		console.group('resizeMoWaveClipPath');
+			sx = _scaleX,//0.0012345,
+			sy = _scaleY;//0.00178814; // Edit these numbers to get close to image width + height /1
+
+		console.group('resizeWaveClipPath');
 		// cl(`bb ${bb}`);
 		// cl(`bb.width ${bb.width}`);
 		// cl(`bb.height ${bb.height}`);
@@ -151,7 +164,7 @@
 		cl(`sx ${sx}`);
 		cl(`sy ${sy} `)
 		console.groupEnd();
-		id(_clipPathId).setAttribute('transform', `scale(${sx} ${sy})`);
+		id(`wave-mask-${_sizeSuffix}`).setAttribute('transform', `scale(${sx} ${sy})`);
 		// id(_clipPathId).setAttribute('transform', `scale(0.0012345, 0.00178814)`);
 		// thePath.setAttribute('transform', `scale(${sx} ${sy})`);
 	}

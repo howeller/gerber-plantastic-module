@@ -11,12 +11,7 @@ section {
 		overflow: hidden;
 		visibility: hidden;
 		border: 1px black solid;
-
-		// display: flex;
-		// flex-direction: row;
-		// flex-wrap: wrap;
-		// justify-content: space-between;
-		// align-items: stretch;
+		cursor: pointer;
 
 		background-image: url(images/background_dt_2x.png);
 		background-size: cover;
@@ -49,10 +44,7 @@ section {
 				max-width: 900px;
 			}
 			@include media("<=tablet") {
-				// max-width: 100%;
-			}
-			@include media("<=phone") {
-				// max-width: 100%;
+				max-width: 100%;
 			}
 
 			svg {
@@ -66,7 +58,6 @@ section {
 					bottom: 0;
 				}
 				@include media("<=tablet") {display: none; }
-				// @include media("<=phone") {display: none; }
 			}
 			svg#wave-tab {
 				@include media("<=tablet") {
@@ -87,10 +78,6 @@ section {
 				@include media("<=tablet") {display: none;}
 			}
 
-			.pic {
-				position: absolute;
-			}
-
 			#pic-dt {
 				@include media(">=desktop") {
 					display: block;
@@ -99,12 +86,10 @@ section {
 					// clip-path:url(#wave-mask-dt);
 				}
 				@include media("<=tablet") {display: none; }
-				// @include media("<=phone") {display: none; }
 			}
 			#pic-tab {
 				@include media("<=tablet") {
 					display: block;
-					// clip-path:url(#wave-mask-tab);
 					width: 100%;
 					bottom: 0;
 				}
@@ -114,8 +99,6 @@ section {
 			#pic-mo {
 				@include media("<=phone") {
 					display: block;
-					// position: absolute;
-					// clip-path: url(#wave-mask-mo);
 					width: 100%;
 					top: 0;
 				}
@@ -140,7 +123,6 @@ section {
 				margin: 4em auto 0;
 			}
 			@include media("<=phone") {
-				// position: relative;
 				margin: clamp(14em, 76vw, 35em) auto 0;
 			}
 
@@ -154,9 +136,8 @@ section {
 					width: 64%;
 				}
 				@include media("<=tablet") {
-					// margin: 5% auto 0.5em;
-					width: 41%;
-					// transform: translateX(-50%);
+					margin: 0 auto;
+					width: 350px;// width: 41%;
 				}
 				@include media("<=phone") {
 					width: clamp(250px, 66vw, 67%);
@@ -207,12 +188,9 @@ section {
 					}
 
 					@include media(">=desktop") {
-						// position: absolute;
 						font-size: clamp(15px, 2vw, 19px);
 						margin-bottom: 1.5em;
 						max-width: 68%;//25rem;
-						// right: 3%;//80px;
-						// top: 50px;
 					}
 					@include media("<=tablet") {
 						margin-bottom: 2em;
@@ -227,7 +205,7 @@ section {
 					border: 0;
 					color: $darkGreen;
 					font: {
-						family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
+						family: cabrito-normal, sans-serif;
 						weight: 700;
 						style: normal;
 					}

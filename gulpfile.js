@@ -4,6 +4,7 @@ const del = require('del'),
 	merge = require('merge-stream'),
 	path = require('path'),
 	gulp = require('gulp'),
+	gulpif = require('gulp-if'),
 	sass = require('gulp-sass')(require('sass')),
 	gcmq = require('gulp-group-css-media-queries'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -25,23 +26,27 @@ const prefixerPrefs = {
 	cascade: false
 }
 
-function buildStyles() {
+function buildStyles(isProduction=false) {
   return gulp.src(dir.scss+'style.scss')
 		.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer(prefixerPrefs))
     .pipe(gcmq())
-		// .pipe(uglifycss())
+		.pipe(gulpif(isProduction, uglifycss()))
+// .pipe(uglifycss())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dir.dist));
 }
 
-function build() {
+function build(isProduction=false) {
 
 	let _html = gulp.src(dir.html+'*.html')
 		.pipe(rename('index.html'));
 
-	let _js = gulp.src( dir.js+'**')
+	let _js = gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
+		.pipe(gulpif(isProduction, sourcemaps.init()))
+		.pipe(gulpif(isProduction, uglify()))
+		.pipe(gulpif(isProduction, sourcemaps.write('./maps')));
 
 	return merge(_html, _js).pipe(gulp.dest(dir.dist));
 }
@@ -50,27 +55,25 @@ function images(){
 	return gulp.src(dir.images+'**').pipe(gulp.dest(dir.dist+'images/'));
 }
 
-function minify(){
-
-	// let _css = gulp.src(dir.dist+'*.css')
-	// 	.pipe(uglifycss())
+/*function minify(){
 
 	return gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest(dir.dist))
-		// .pipe(rename({suffix: '.min'}))
-
-	// return merge(_css, _js).pipe(gulp.dest(dir.dist))
-};
+};*/
 
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
-gulp.task('build', build);
-gulp.task('sass', buildStyles);
-gulp.task('prod', gulp.series('sass', 'build', minify));
-gulp.task('images', gulp.series('clean', images, 'sass', 'build'));
-gulp.task('default', gulp.series('sass', 'build'));
+// gulp.task('build', build);
+gulp.task('build:dev', () => { return build(false)});
+gulp.task('build:prod', () => { return build(true)});
+gulp.task('sass:dev', () => { return buildStyles(false)});
+gulp.task('sass:prod', () => { return buildStyles(true)});
+// gulp.task('sass', buildStyles);
+gulp.task('prod', gulp.series('sass:prod', 'build:prod'));
+gulp.task('images', gulp.series('clean', images, 'sass:dev', 'build:dev'));
+gulp.task('default', gulp.series('sass:dev', 'build:dev'));
 gulp.task('watch', () => { return gulp.watch(['src/*/**'], gulp.series('default'))});
 
 

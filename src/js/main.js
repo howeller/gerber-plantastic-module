@@ -1,4 +1,4 @@
-const onClick = e => console.log(`CLICK!`);
+// const onClick = e => console.log(`CLICK!`);
 
 (function(window, document){
 
@@ -45,7 +45,7 @@ const onClick = e => console.log(`CLICK!`);
 	}
 
 	function animateDesktop() {
-		cl('animateDesktop!');
+		// cl('animateDesktop!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
@@ -59,7 +59,7 @@ const onClick = e => console.log(`CLICK!`);
 	}
 
 	function animateTablet() {
-		cl('animateTablet!');
+		// cl('animateTablet!');
 		let _picProp = gsap.getProperty('#pic-tab'),
 		_picW = 1/_picProp('width'),
 		_picH = _picProp('height');
@@ -78,7 +78,7 @@ const onClick = e => console.log(`CLICK!`);
 	}
 
 	function animateMobile() {
-		cl('animateMobile!');
+		// cl('animateMobile!');
 
 		resizeWaveClipPath('mo', 0.0012345, 0.00178814);
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
@@ -136,10 +136,10 @@ const onClick = e => console.log(`CLICK!`);
 			_distanceX = Math.round( (_diffWidth * pct)/100 )/2,
 			_startX = _distanceX <= 0 ? 0 : '+='+_distanceX * -1;
 
-			console.group('getDtPicStartX')
+			/*console.group('getDtPicStartX')
 			cl('_diffWidth '+_diffWidth);
 			cl('_startX '+_startX);
-			console.groupEnd();
+			console.groupEnd();*/
 		return _startX;
 	}
 	function getDtWaveEndX() {

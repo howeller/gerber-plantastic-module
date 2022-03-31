@@ -30,7 +30,6 @@ section .hero {
   overflow: hidden;
   visibility: hidden;
   border: 1px black solid;
-  cursor: pointer;
   background-image: url(images/background_dt_2x.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -79,7 +78,6 @@ section .hero .lockup-container #txt-wrapper button.cta {
   border-radius: 1em;
   border: 0;
   color: #005F30;
-  cursor: pointer;
   font-family: cabrito-normal, sans-serif;
   font-weight: 700;
   font-style: normal;

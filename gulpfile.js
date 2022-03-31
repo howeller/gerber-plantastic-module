@@ -27,15 +27,14 @@ const prefixerPrefs = {
 }
 
 function buildStyles(isProduction=false) {
-  return gulp.src(dir.scss+'style.scss')
+	return gulp.src(dir.scss+'style.scss')
 		.pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer(prefixerPrefs))
-    .pipe(gcmq())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer(prefixerPrefs))
+		.pipe(gcmq())
 		.pipe(gulpif(isProduction, uglifycss()))
-// .pipe(uglifycss())
-    .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dir.dist));
+		.pipe(sourcemaps.write('./maps'))
+		.pipe(gulp.dest(dir.dist));
 }
 
 function build(isProduction=false) {
@@ -55,22 +54,11 @@ function images(){
 	return gulp.src(dir.images+'**').pipe(gulp.dest(dir.dist+'images/'));
 }
 
-/*function minify(){
-
-	return gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./maps'))
-		.pipe(gulp.dest(dir.dist))
-};*/
-
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
-// gulp.task('build', build);
 gulp.task('build:dev', () => { return build(false)});
 gulp.task('build:prod', () => { return build(true)});
 gulp.task('sass:dev', () => { return buildStyles(false)});
 gulp.task('sass:prod', () => { return buildStyles(true)});
-// gulp.task('sass', buildStyles);
 gulp.task('prod', gulp.series('sass:prod', 'build:prod'));
 gulp.task('images', gulp.series('clean', images, 'sass:dev', 'build:dev'));
 gulp.task('default', gulp.series('sass:dev', 'build:dev'));

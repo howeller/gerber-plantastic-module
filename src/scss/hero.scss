@@ -180,7 +180,6 @@ section {
 				}
 
 				p#txt {
-					max-width: 80%;
 					margin: 0 auto clamp(2em, 5vh, 5rem);
 					font: {
 						family: cabrito-normal, sans-serif;
@@ -194,9 +193,11 @@ section {
 						max-width: 68%;//25rem;
 					}
 					@include media("<=tablet") {
+						max-width: 65%;
 						margin-bottom: 2em;
 					}
 					@include media("<=phone") {
+						max-width: 80%;
 					  font-size: clamp(13px, 4vw, 27px);
 					}
 				}

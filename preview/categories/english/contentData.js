@@ -87,6 +87,84 @@ var objData = {
 						"]"
 					}
 				]
+			},
+			{
+				folderName: "statics",
+				title: "Static Banners",
+				bannerList: [
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Desktop@2x",
+						src: "Gerber_Plant-tastic_Hero_Desktop@2x",
+						w: 1440,
+						h: 400,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					},
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Desktop@1x",
+						src: "Gerber_Plant-tastic_Hero_Desktop@1x",
+						w: 1440,
+						h: 400,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					},
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Tablet@2x",
+						src: "Gerber_Plant-tastic_Hero_Tablet@2x",
+						w: 1024,
+						h: 650,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					},
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Tablet@1x",
+						src: "Gerber_Plant-tastic_Hero_Tablet@1x",
+						w: 1024,
+						h: 650,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					},
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Mobile@2x",
+						src: "Gerber_Plant-tastic_Hero_Mobile@2x",
+						w: 780,
+						h: 1438,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					},
+					{
+						overwriteSizeDisplay: "",
+						label: "Gerber_Plant-tastic_Hero_Mobile@1x",
+						src: "Gerber_Plant-tastic_Hero_Mobile@1x",
+						w: 780,
+						h: 1438,
+						approved: false,
+						dload: true,
+						manualzip: false,
+						backup: false,
+						type: "jpg"
+					}
+				]
 			}
 		]
 	}]
